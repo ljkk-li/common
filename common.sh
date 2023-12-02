@@ -70,6 +70,8 @@ fi
 
 if [[ -n "$(echo "${CPU_SELECTION}" |grep -i 'E5\|默认\|false')" ]]; then
   CPU_SELECTION="false"
+elif [[ -n "$(echo "${CPU_SELECTION}" |grep '7763')" ]]; then
+  CPU_SELECTION="7763" 
 elif [[ -n "$(echo "${CPU_SELECTION}" |grep '8370')" ]]; then
   CPU_SELECTION="8370"
 elif [[ -n "$(echo "${CPU_SELECTION}" |grep '8272')" ]]; then
@@ -269,7 +271,7 @@ src-git danshui1 https://github.com/281677160/openwrt-package.git;${SOURCE}
 EOF
 ./scripts/feeds update -a
 cat >>"feeds.conf.default" <<-EOF
-src-git helloworld https://github.com/fw876/helloworld.git
+src-git helloworld https://github.com/fw876/helloworld;main
 src-git passwall3 https://github.com/xiaorouji/openwrt-passwall-packages;main
 EOF
 
